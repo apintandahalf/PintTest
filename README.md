@@ -1,5 +1,5 @@
 # PintTest
-A header only unit test library.  Not at all fully featured, but very easy to include in your project.
+A header only unit test library for C++.  Not at all fully featured, but very easy to include in your project.
 
 Put the single header in your project, or somewhere where you project can find it, and add some tests. 
 
