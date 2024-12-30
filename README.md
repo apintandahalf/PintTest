@@ -13,8 +13,6 @@ Currently developed with Visual Studio 2022
 
     Test suites (groups of tests with a common name prefix and common setup/tear down)
 
-    Filtering to allowing running a subset of tests (matching on a part of the test name)
-
     (Optional) order randomisation
 
     Exception handling
