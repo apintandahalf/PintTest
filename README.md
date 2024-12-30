@@ -3,7 +3,7 @@ A header only unit test library for C++.  Not at all fully featured, but very ea
 
 Put the single header in your project, or somewhere where you project can find it, and add some tests. 
 
-Call PintTest::runAllTests to execute all the test cases. 
+Call PintTest::runAllTests to execute all the test cases (passing in argc and argv for filtering) 
 
 See the header file for supported expects and asserts.
 
