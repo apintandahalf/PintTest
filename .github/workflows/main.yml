@@ -1,0 +1,38 @@
+            - name: clang-tidy review
+  # You may pin to the exact commit or the version.
+  # uses: ZedThree/clang-tidy-review@5d848bcdce74e046c72a7addedbb13293f5e5605
+  uses: ZedThree/clang-tidy-review@v0.17.0
+  with:
+    # Authentication token
+    token: # optional, default is ${{ github.token }}
+    # Directory containing the compile_commands.json file
+    build_dir: # optional, default is .
+    # Absolute path to initial working directory. Useful if generating `compile_commands.json` outside of the Action
+    base_dir: # optional, default is ${{ github.workspace }}
+    # Version of clang-tidy to use; one of 13, 14, 15, 16
+    clang_tidy_version: # optional, default is 16
+    # List of checks
+    clang_tidy_checks: # optional, default is -*,performance-*,readability-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,mpi-*,misc-*
+    # Location of .clang-tidy config file. If specified, takes preference over `clang_tidy_checks`
+    config_file: # optional, default is 
+    # Comma-separated list of files or patterns to include
+    include: # optional, default is *.[ch],*.[ch]xx,*.[ch]pp,*.[ch]++,*.cc,*.hh
+    # Comma-separated list of files or patterns to exclude
+    exclude: # optional, default is 
+    # Comma-separated list of apt packages to install
+    apt_packages: # optional, default is 
+    # If set, run CMake as part of the action using this command
+    cmake_command: # optional, default is 
+    # Maximum number of comments to post at once
+    max_comments: # optional, default is 25
+    # Message to post on PR if no issues are found. An empty string will post no LGTM comment.
+    lgtm_comment_body: # optional, default is clang-tidy review says "All clean, LGTM! :+1:"
+    # Only generate but don't post the review, leaving it for the second workflow. Relevant when receiving PRs from forks that don't have the required permissions to post reviews.
+    split_workflow: # optional
+    # Use annotations instead of comments. See README for limitations on annotations
+    annotations: # optional
+    # 
+    pr: # optional, default is ${{ github.event.pull_request.number }}
+    # 
+    repo: # optional, default is ${{ github.repository }}
+          
