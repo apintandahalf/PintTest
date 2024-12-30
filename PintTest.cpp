@@ -1,5 +1,9 @@
 #include "PintTest.h"
 
+#include <vector>
+#include <string_view>
+#include <iostream>
+
 namespace
 {
     int times2(int x) // function under test
@@ -29,11 +33,29 @@ namespace
 int main()
 {
     {
-        const auto rc = PintTest::runAllTests();
+        const auto rc = PintTest::runAllTests(0, nullptr);
         if (0 == rc)
         {
             std::cerr << "Test failed at line " << __LINE__ << "\n";
             return 1; // it should always fail because of the failing test
+        }
+    }
+    {
+        const char* argv[]{ "p1", "p2" };
+        const auto rc = PintTest::runAllTests(2, argv);
+        if (0 == rc)
+        {
+            std::cerr << "Test failed at line " << __LINE__ << "\n";
+            return 1; // it should always fail because of the failing test
+        }
+    }
+    {
+        const char* argv[]{ "--filter=-ThisAlwaysFails" };
+        const auto rc = PintTest::runAllTests(1, argv);
+        if (0 != rc)
+        {
+            std::cerr << "Test failed at line " << __LINE__ << "\n";
+            return 1;
         }
     }
     {

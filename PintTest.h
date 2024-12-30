@@ -56,9 +56,9 @@ TEST(testtimes2Wrong)
     for (int i=1; i<3; ++i)
         ASSERT_NE(0, times2(i)) << i;
 }
-int main()
+int main(int argc, const char* argv[])
 {
-    return PintTest::runAllTests();
+    return PintTest::runAllTests(argc, argv);
 }
 
 */
@@ -69,16 +69,13 @@ int main()
 #include <vector>
 #include <sstream>
 #include <chrono>
+#include <unordered_set>
+#include <string>
+#include <string_view>
 
 #ifdef _WIN32
 #include "Windows.h"
 #endif
-
-#include <unordered_set>
-#include <vector>
-#include <string>
-#include <string_view>
-#include <functional>
 
 class PintTest
 {
@@ -181,10 +178,15 @@ public:
         return { s_tests_ran, s_fails };
     }
     // Create from argc/argv as follows: std::vector<std::string_view> args(argv, argv + argc);
-    static int runAllTests(const std::vector<std::string_view>& args = std::vector<std::string_view>{})
+    static int runAllTests(const std::vector<std::string_view>& args)
     {
-        auto[_, failed] = runAllTests2(args);
+        auto [_, failed] = runAllTests2(args);
         return failed;
+    }
+    /** UB if argv doesn't contain argc strings.  Which is why the version taking a vector is better.  This just makes it easier to use */
+    static int runAllTests(int argc, const char* argv[])
+    {
+        return runAllTests(std::vector<std::string_view>(argv, argv + argc));
     }
 
     static void runTest(std::function<void()> testFn, const std::string& testCase)
