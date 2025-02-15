@@ -23,13 +23,13 @@ Test cases are auto-registered across all cpp files in the test program.
 PintTest::runAllTests will run them all and report the detail and a summary.
 
 Run time parameters:
-
+// @TOTO - make the filter a regex
 --filter=-<some_string>
-    If the test name matches some_string (simply, no regex supported) then don't run the test.If not, do.  If not specified, run all tests.
+    If the test name matches some_string (simple substring match, no regex supported) then don't run the test.If not, do.  If not specified, run all tests.
     Note that filtering for only one string is supported
 
 --filter=<some_string>
-    If the test name matches some_string *(simply, no regex supported) then run the test.If not, not.  If not specified, run all tests.
+    If the test name matches some_string *(simple substring match, no regex supported) then run the test.If not, not.  If not specified, run all tests.
     Note that filtering for only one string is supported
 
 You can't specify both the filter and the not filter.
